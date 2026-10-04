@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recall — Workspace Recovery</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">R</span><div><b>recall</b><small>WORKSPACE RECOVERY</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active">▤ &nbsp; Document editor</button>
+      <button class="nav-item" id="historyNav">◷ &nbsp; Version history</button>
+      <div class="sidebar-note">
+        <span class="live-dot"></span>
+        <div><b>Local workspace</b><small>Your demo runs on this computer.</small></div>
+      </div>
+      <div class="side-footer">DSA MINI PROJECT<br><b>Stack-based recovery system</b></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><span class="eyebrow">MY WORKSPACE / DOCUMENTS</span><h1>Document editor</h1></div>
+        <div class="top-actions"><span class="saved" id="saveStatus">● Ready</span><button class="primary small" id="saveBtn">Save version</button></div>
+      </header>
+
+      <section class="intro">
+        <div><div class="eyebrow">YOUR WORK, NEVER LOST</div><h2>Make changes. <em>Recover with confidence.</em></h2><p>Recall uses two stacks to let you undo, redo, and restore earlier document states.</p></div>
+        <div class="intro-icon">↶</div>
+      </section>
+
+      <div class="workspace-grid">
+        <section class="panel editor-panel">
+          <div class="panel-head"><div><span class="eyebrow">CURRENT DOCUMENT</span><h3>✎ &nbsp; assignment.txt</h3></div><span class="file-pill">TXT FILE</span></div>
+          <div class="toolbar">
+            <button id="undoBtn" class="tool-btn">↶ &nbsp; Undo <kbd>Ctrl Z</kbd></button>
+            <button id="redoBtn" class="tool-btn">↷ &nbsp; Redo <kbd>Ctrl Y</kbd></button>
+            <span class="toolbar-spacer"></span><span class="autosave">Changes tracked by Recall</span>
+          </div>
+          <textarea id="editor" spellcheck="false" placeholder="Start writing your document..."></textarea>
+          <div class="editor-foot"><span id="wordCount">0 words</span><span id="charCount">0 characters</span></div>
+        </section>
+
+        <section class="panel history-panel" id="historyPanel">
+          <div class="panel-head"><div><span class="eyebrow">RECOVERY CENTER</span><h3>Version history</h3></div><span class="count-pill" id="versionCount">1 version</span></div>
+          <p class="muted">Choose a saved version to restore it.</p>
+          <div id="versions" class="versions"></div>
+        </section>
+      </div>
+
+      <section class="stack-section">
+        <div class="section-title"><div><span class="eyebrow">THE DSA ENGINE</span><h3>Live stack visualizer</h3></div><span class="live-tag"><i></i> LIVE STATE</span></div>
+        <div class="stack-grid">
+          <div class="panel stack-card">
+            <div class="stack-head"><div><span class="stack-symbol undo-symbol">↶</span><div><h4>Undo Stack</h4><p>Previous document states</p></div></div><span class="count-pill" id="undoCount">0 items</span></div>
+            <div class="stack-visual" id="undoVisual"><div class="empty-stack">Stack is empty</div></div>
+            <div class="stack-caption"><b>TOP</b><span>Last saved state is removed first (LIFO)</span></div>
+          </div>
+          <div class="panel stack-card">
+            <div class="stack-head"><div><span class="stack-symbol redo-symbol">↷</span><div><h4>Redo Stack</h4><p>States that were undone</p></div></div><span class="count-pill" id="redoCount">0 items</span></div>
+            <div class="stack-visual" id="redoVisual"><div class="empty-stack">Stack is empty</div></div>
+            <div class="stack-caption"><b>TOP</b><span>Most recently undone state is on top</span></div>
+          </div>
+        </div>
+      </section>
+      <footer>RECALL <span>·</span> Stack-based workspace recovery <span>·</span> C++ + Flask</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="/script.js"></script>
+</body>
+</html>
